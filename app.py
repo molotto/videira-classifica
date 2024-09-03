@@ -49,7 +49,7 @@ def previsao(interpreter, image):
     df['classes'] = classes
     df['probabilidades (%)'] = 100*output_data[0]
 
-     fig = px.bar(df,y='classes', x='probabilidades (%)',  orientation='h', text='probabilidades (%)',
+    fig = px.bar(df,y='classes', x='probabilidades (%)',  orientation='h', text='probabilidades (%)',
                      title='Probabilidade de Classes de Doenças em Uvas')
 
     st.plotly_chart(fig)
