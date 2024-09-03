@@ -7,21 +7,15 @@ import io
 import gdown
 import plotly.express as px
 
-
-
-
-
 @st.cache_resource
 def carrega_modelo():
-    url = 'https://drive.google.com/uc?id=1NCNmShMWtS2_5J9Snqb_EF8qAa4abstG'
+    url = 'https://drive.google.com/uc?id=1VPpwl8cagLfP8j6smglsCrarV0l82Jkh'
     
     gdown.download(url,'modelo_quantizado16bits.tflite')
     interpreter = tf.lite.Interpreter(model_path='modelo_quantizado16bits.tflite')
     interpreter.allocate_tensors()
-
     
     return interpreter
-
 
 def carrega_imagem():
     # Cria um file uploader que permite o usuário carregar imagens
@@ -41,9 +35,6 @@ def carrega_imagem():
         image = np.expand_dims(image, axis=0)
 
         return image
-
-
-
 
 def previsao(interpreter,image):
     # Obtém detalhes dos tensores de entrada e saída
@@ -84,7 +75,6 @@ def main():
 
         previsao(interpreter,image)
     
-
 
 if __name__ == "__main__":
     main()
